@@ -1,0 +1,175 @@
+<!DOCTYPE html><html lang="en"><head>
+  
+  
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Expandable Focus and Blur Gallery</title>
+    <style>
+        body { margin: 0; padding: 0; background: #222; }
+        .gallery-container {
+          display: flex;
+          width: 90vw;
+          max-width: 1200px;
+          height: 60vh;
+          margin: 10vh auto;
+          gap: 10px;
+        }
+        .gallery-panel {
+          background-size: cover;
+          background-position: center;
+          background-repeat: no-repeat;
+          height: 100%;
+          border-radius: 50px;
+          color: white;
+          cursor: pointer;
+          flex: 0.5;
+          position: relative;
+          transition: flex 0.7s cubic-bezier(0.15, 0.85, 0.35, 1), filter 0.7s ease;
+          filter: grayscale(80%) blur(3px);
+          overflow: hidden;
+        }
+        .gallery-panel h3 {
+          font-family: 'Inter', sans-serif;
+          font-size: 2rem;
+          position: absolute;
+          bottom: 20px;
+          left: 20px;
+          margin: 0;
+          opacity: 0;
+          transition: opacity 0.3s ease-in 0.4s;
+          text-shadow: 0 2px 5px rgba(0,0,0,0.8);
+        }
+        .gallery-panel.active {
+          flex: 5;
+          filter: grayscale(0%) blur(0px);
+        }
+        .gallery-panel.active h3 {
+          opacity: 1;
+        }
+        @media (max-width: 768px) {
+          .gallery-container { width: 95vw; height: 50vh; }
+          .gallery-panel h3 { font-size: 1.2rem; }
+        }
+    </style>
+
+            <meta name="description" content="A beautiful component imported via Developer Studio AI.">
+            <meta name="robots" content="index, follow">
+            <meta property="og:title" content="Expandable Focus and Blur Gallery">
+            <meta property="og:description" content="A beautiful component imported via Developer Studio AI.">
+            <meta property="og:image" content="https://codescompiler.com/images/posts/css-focus-blur-gallery.png">
+            <meta name="twitter:card" content="summary_large_image">
+            <meta name="twitter:title" content="Expandable Focus and Blur Gallery">
+            <meta name="twitter:description" content="A beautiful component imported via Developer Studio AI.">
+            <meta name="twitter:image" content="https://codescompiler.com/images/posts/css-focus-blur-gallery.png">
+          </head>
+<body>
+
+<!-- ── CODESCOMPILER DEMO HEADER ── -->
+<style>
+  #cc-demo-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 16px;
+    height: 48px;
+    background: #1a1b26;
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+    font-family: 'Segoe UI', system-ui, sans-serif;
+    color: white;
+    box-sizing: border-box;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 999999;
+  }
+  #cc-demo-header a { text-decoration: none; color: white; }
+  .cc-logo { font-size: 14px; font-weight: 900; }
+  .cc-logo span { color: #04aa6d; }
+  .cc-sep { width: 1px; height: 20px; background: rgba(255,255,255,0.12); margin: 0 12px; }
+  .cc-title { font-size: 13px; font-weight: 600; color: rgba(255,255,255,0.65); flex: 1; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .cc-actions { display: flex; gap: 8px; }
+  .cc-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    padding: 6px 12px;
+    background: rgba(255,255,255,0.08);
+    border: 1px solid rgba(255,255,255,0.12);
+    border-radius: 6px;
+    font-size: 12px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.2s;
+    color: rgba(255,255,255,0.7);
+  }
+  .cc-btn:hover { background: rgba(255,255,255,0.15); color: white; }
+  .cc-btn svg { width: 14px; height: 14px; }
+  @media (max-width: 600px) {
+    .cc-title { display: none; }
+    .cc-btn span { display: none; }
+  }
+</style>
+<header id="cc-demo-header">
+  <div style="display: flex; align-items: center; overflow: hidden;">
+    <a href="https://codescompiler.com" class="cc-logo" target="_blank" rel="dofollow"><span>Codes</span>Compiler</a>
+    <div class="cc-sep"></div>
+    <h1 class="cc-title" title="Expandable Focus and Blur Gallery" style="margin: 0; font-size: 13px; font-weight: 600;">📺 Expandable Focus and Blur Gallery</h1>
+  </div>
+  <div class="cc-actions">
+    <a href="https://codescompiler.com/blog/css-focus-blur-gallery" class="cc-btn" target="_blank" rel="dofollow" title="Read the full post">
+      <svg fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7"></path></svg>
+      <span>Back to Post</span>
+    </a>
+    <a href="index.html" class="cc-btn" target="_blank" download="css-focus-blur-gallery.html" title="Download source file">
+      <svg fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path></svg>
+      <span>Download</span>
+    </a>
+    <button onclick="document.getElementById('cc-demo-header').style.display='none'" class="cc-btn" title="Hide header for fullscreen view">
+      <svg fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4 8V4m0 0h4M4 4l5 5m11-1V4m0 0h-4m4 0l5-5M4 16v4m0 0h4m-4 0l5-5m11 5l-5-5m5 5v-4m0 4h-4"></path></svg>
+      <span>Fullscreen</span>
+    </button>
+  </div>
+</header>
+<!-- ================================== -->
+
+    <div class="gallery-container">
+      <div class="gallery-panel active" style="background-image: url('https://images.unsplash.com/photo-1506744626753-143d3f0a1c6a?auto=format&amp;fit=crop&amp;w=800&amp;q=80');">
+        <h3>Mountains</h3>
+      </div>
+      <div class="gallery-panel" style="background-image: url('https://images.unsplash.com/photo-1511576661531-b34d7da5d0f4?auto=format&amp;fit=crop&amp;w=800&amp;q=80');">
+        <h3>Beach</h3>
+      </div>
+      <div class="gallery-panel" style="background-image: url('https://images.unsplash.com/photo-1472214103451-9374bd1c798e?auto=format&amp;fit=crop&amp;w=800&amp;q=80');">
+        <h3>Forest</h3>
+      </div>
+      <div class="gallery-panel" style="background-image: url('https://images.unsplash.com/photo-1533446002934-2e9b110bc595?auto=format&amp;fit=crop&amp;w=800&amp;q=80');">
+        <h3>Desert</h3>
+      </div>
+      <div class="gallery-panel" style="background-image: url('https://images.unsplash.com/photo-1493246507139-91e8fad9978e?auto=format&amp;fit=crop&amp;w=800&amp;q=80');">
+        <h3>Aurora</h3>
+      </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const panels = document.querySelectorAll('.gallery-panel');
+            if(!panels.length) return;
+
+            panels.forEach(panel => {
+                panel.addEventListener('click', () => {
+                    removeActiveClasses();
+                    panel.classList.add('active');
+                });
+            });
+
+            function removeActiveClasses() {
+                panels.forEach(panel => {
+                    panel.classList.remove('active');
+                });
+            }
+        });
+    </script>
+
+
+</body></html>
